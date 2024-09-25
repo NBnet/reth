@@ -410,13 +410,13 @@ reth-trie-db = { path = "crates/trie/db" }
 reth-trie-parallel = { path = "crates/trie/parallel" }
 
 # revm
-revm = { version = "14.0.3", features = [
+revm = { git = "ssh://git@github.com/NBnet/revm.git", features = [
     "std",
     "secp256k1",
     "blst",
 ], default-features = false }
-revm-inspectors = "0.7.6"
-revm-primitives = { version = "10.0.0", features = [
+revm-inspectors = { git = "ssh://git@github.com/NBnet/revm-inspectors.git" }
+revm-primitives = { git = "ssh://git@github.com/NBnet/revm.git", features = [
     "std",
 ], default-features = false }
 
