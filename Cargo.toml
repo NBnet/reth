@@ -590,6 +590,11 @@ tikv-jemalloc-ctl = "0.6"
 tikv-jemallocator = "0.6"
 tracy-client = "0.17.3"
 
+[patch.crates-io]
+revm = { git = "https://github.com/NBnet/revm.git", rev = "35e8f209" }
+revm-inspectors = { git = "https://github.com/NBnet/revm-inspectors.git", rev = "2a2a7ff47db187cec8bac30e1132dd1d190846cc" }
+revm-primitives = { git = "https://github.com/NBnet/revm.git", rev = "35e8f209" }
+
 #[patch.crates-io]
 #alloy-consensus = { git = "https://github.com/alloy-rs/alloy", rev = "8c499409"}
 #alloy-eips = { git = "https://github.com/alloy-rs/alloy", rev = "8c499409"}
