@@ -44,38 +44,40 @@ help: ## Display this help.
 ##@ Build
 
 .PHONY: install
-install: ## Build and install the reth binary under `~/.cargo/bin`.
+install: install-dep ## Build and install the reth binary under `~/.cargo/bin`.
 	cargo install --path bin/reth --bin reth --force --locked \
 		--features "$(FEATURES)" \
 		--profile "$(PROFILE)" \
 		$(CARGO_INSTALL_EXTRA_FLAGS)
 
 .PHONY: install-op
-install-op: ## Build and install the op-reth binary under `~/.cargo/bin`.
+install-op: install-dep ## Build and install the op-reth binary under `~/.cargo/bin`.
 	cargo install --path crates/optimism/bin --bin op-reth --force --locked \
 		--features "optimism $(FEATURES)" \
 		--profile "$(PROFILE)" \
 		$(CARGO_INSTALL_EXTRA_FLAGS)
 
 .PHONY: build
-build: ## Build the reth binary into `target` directory.
+build: install-dep ## Build the reth binary into `target` directory.
 	cargo build --bin reth --features "$(FEATURES)" --profile "$(PROFILE)"
 
 .PHONY: build-debug
-build-debug: ## Build the reth binary into `target/debug` directory.
+build-debug: install-dep ## Build the reth binary into `target/debug` directory.
 	cargo build --bin reth --features "$(FEATURES)"
 
 .PHONY: build-op
-build-op: ## Build the op-reth binary into `target` directory.
+build-op: install-dep ## Build the op-reth binary into `target` directory.
 	cargo build --bin op-reth --features "optimism $(FEATURES)" --profile "$(PROFILE)" --manifest-path crates/optimism/bin/Cargo.toml
 
 # Builds the reth binary natively.
-build-native-%:
+build-native-%: install-dep
 	cargo build --bin reth --target $* --features "$(FEATURES)" --profile "$(PROFILE)"
 
-op-build-native-%:
+op-build-native-%: install-dep
 	cargo build --bin op-reth --target $* --features "optimism $(FEATURES)" --profile "$(PROFILE)" --manifest-path crates/optimism/bin/Cargo.toml
 
+install-dep: 
+	cargo install rust2go-cli
 # The following commands use `cross` to build a cross-compile.
 #
 # These commands require that:
