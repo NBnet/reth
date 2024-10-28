@@ -54,6 +54,7 @@ rand.workspace = true
 revm.workspace = true
 
 [features]
+expander = ["reth-trie/expander"]
 test-utils = [
   "alloy-signer",
   "alloy-signer-local",
