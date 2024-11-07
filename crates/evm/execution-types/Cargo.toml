@@ -33,6 +33,7 @@ reth-primitives = { workspace = true, features = ["arbitrary", "test-utils"] }
 
 [features]
 default = ["std"]
+expander = ["revm/expander", "reth-trie/expander"]
 optimism = ["reth-primitives/optimism", "revm/optimism"]
 serde = ["dep:serde", "reth-trie/serde", "revm/serde"]
 serde-bincode-compat = ["reth-primitives/serde-bincode-compat", "reth-trie/serde-bincode-compat", "serde_with"]

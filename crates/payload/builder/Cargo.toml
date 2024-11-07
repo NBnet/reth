@@ -41,3 +41,4 @@ revm.workspace = true
 
 [features]
 test-utils = ["reth-chain-state"]
+expander = ["reth-ethereum-engine-primitives/expander"]
